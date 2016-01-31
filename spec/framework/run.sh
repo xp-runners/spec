@@ -23,11 +23,10 @@ result=0
 for markdown in "$@" ; do
   DIR=$(mktemp -d)
   case $(uname) in
-    CYGWIN*) EXE=xp.exe ;;
-    *) EXE=xp ;;
+    CYGWIN*) EXE=xp.exe ; cp xp.exe "$DIR" ;;
+    Darwin*) EXE=xp ; cp xp xp.exe "$DIR" ;;
+    *) EXE=xp ; cp xp "$DIR" ;;
   esac
-
-  cp $EXE "$DIR"
 
   printf '\033[32;1m%s\033[0m\n' "$(parse "$markdown" "$DIR")"
 
