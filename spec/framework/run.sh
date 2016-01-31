@@ -16,10 +16,7 @@ echo
 . $(dirname "$0")/tests.sh
 . $(dirname "$0")/verify.sh
 
-# Setup
 result=0
-
-# Runs
 for markdown in "$@" ; do
   DIR=$(mktemp -d)
   case $(uname) in
