@@ -15,4 +15,4 @@ install:
 script:
   - curl -sSL https://bintray.com/artifact/download/xp-runners/generic/setup-7.1.1.sh > setup.sh
   - sh setup.sh
-  - sh spec/basic.sh
+  - sh spec/framework/run.sh spec/*.md
