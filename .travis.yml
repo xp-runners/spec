@@ -13,7 +13,7 @@ install:
   - sh install-${TRAVIS_OS_NAME}.sh
 
 script:
-  - curl -sSL https://raw.githubusercontent.com/xp-runners/reference/master/setup.sh.in | sed -e "s/@VERSION@/7.0.0/g" > setup.sh
+  - curl -sSL https://raw.githubusercontent.com/xp-runners/reference/master/setup.sh.in | sed -e "s/@VERSION@/7.1.0/g" > setup.sh
   - sh setup.sh
   - echo 'It worked!' > class-main.php
   - ./xp
