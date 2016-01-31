@@ -3,7 +3,9 @@ XP Runners
 [![Build Status on TravisCI](https://secure.travis-ci.org/xp-runners/spec.svg)](http://travis-ci.org/xp-runners/spec)
 [![BSD License](https://raw.githubusercontent.com/xp-framework/web/master/static/licence-bsd.png)](https://github.com/xp-runners/reference/blob/master/LICENSE.md)
 
-Test the XP Runners specification. Uses a [markdown-driven](https://github.com/xp-runners/spec/tree/master/spec) specification.
+Test the XP Runners specification. Uses a markdown-driven specification (*see below*).
+
+## Running the tests
 
 ```
 $ sh spec/framework/run.sh spec/*.md
@@ -26,3 +28,15 @@ Basic tests
 
 Exit 0
 ```
+
+## Authoring a test
+
+The parser works as follows:
+
+* The first-level head line in a file becomes the category's name (e.g., *Basic tests* in the output above)
+* Second-level head lines become group names (e.g., *Negative tests*)
+* Code inside a code block with `sh` language is executed.
+* If a code line starts with `$`, the command following is executed and its output is compared against the following line.
+* Code from inside third-level headlines titled *Setup* and *Teardown* are executed before and after a category is run, respectively
+
+Have a look at the markdown files [in here](https://github.com/xp-runners/spec/tree/master/spec) for examples.
