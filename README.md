@@ -33,10 +33,11 @@ Exit 0
 
 The parser works as follows:
 
-* The first-level head line in a file becomes the category's name (e.g., *Basic tests* in the output above)
-* Second-level head lines become group names (e.g., *Negative tests*)
+* The first-level headline in a file becomes the category's name (e.g., *Basic tests* in the output above)
+* Second-level headlines become group names (e.g., *Negative tests*)
 * Code inside a code block with `sh` language is executed.
-* If a code line starts with `$`, the command following is executed and its output is compared against the following line.
+* If a code line starts with `$`, the command following it is executed. Its output is compared against the following line.
 * Code from inside third-level headlines titled *Setup* and *Teardown* are executed before and after a category is run, respectively
+* Tests error when their code yields a nonzero exitcode.
 
 Have a look at the markdown files [in here](https://github.com/xp-runners/spec/tree/master/spec) for examples.
