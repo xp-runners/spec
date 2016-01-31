@@ -9,9 +9,7 @@ verify() {
   code=${3-0}
 
   before=$(pwd)
-  cd $DIR
-  output=$(./$command 2>&1) && exit=0 || exit=$?
-  cd $before
+  output=$("$DIR"/$command 2>&1) && exit=0 || exit=$?
 
   if [ $exit -eq $code ] ; then
     if echo "$output" | grep -q "$expect"; then
