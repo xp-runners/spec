@@ -16,29 +16,25 @@ echo
 . $(dirname "$0")/tests.sh
 . $(dirname "$0")/verify.sh
 
-main() {
-  result=0
-  for markdown in "$@" ; do
-    DIR=$(mktemp -d)
-    case $(uname) in
-      CYGWIN*) EXE=xp.exe ; cp xp.exe "$DIR" ;;
-      Darwin*) EXE=xp ; cp xp xp.exe "$DIR" ;;
-      *) EXE=xp ; cp xp "$DIR" ;;
-    esac
+result=0
+for markdown in "$@" ; do
+  DIR=$(mktemp -d)
+  case $(uname) in
+    CYGWIN*) EXE=xp.exe ; cp xp.exe "$DIR" ;;
+    Darwin*) EXE=xp ; cp xp xp.exe "$DIR" ;;
+    *) EXE=xp ; cp xp "$DIR" ;;
+  esac
 
-    printf '\033[32;1m%s\033[0m\n' "$(parse "$markdown" "$DIR")"
+  printf '\033[32;1m%s\033[0m\n' "$(parse "$markdown" "$DIR")"
 
-    [ -f "$DIR/.setup.sh" ] && . "$DIR/.setup.sh"
-    for test in "$DIR/"*.sh ; do
-      . $test
-    done
-    [ -f "$DIR/.teardown.sh" ] && . "$DIR/.teardown.sh"
-
-    rm -rf "$DIR"
+  [ -f "$DIR/.setup.sh" ] && . "$DIR/.setup.sh"
+  for test in "$DIR/"*.sh ; do
+    . $test 
   done
+  [ -f "$DIR/.teardown.sh" ] && . "$DIR/.teardown.sh"
 
-  echo "Exit $result"
-  return $result
-}
+  rm -rf "$DIR"
+done
 
-time main "$@" || exit 1
+echo "Exit $result"
+exit $result
