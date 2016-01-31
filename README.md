@@ -31,13 +31,6 @@ Exit 0
 
 ## Authoring a test
 
-The parser works as follows:
-
-* The first-level headline in a file becomes the category's name (e.g., *Basic tests* in the output above)
-* Second-level headlines become group names (e.g., *Negative tests*)
-* Code inside a code block with `sh` language is executed.
-* If a code line starts with `$`, the command following it is executed. Its output is compared against the following line.
-* Code from inside third-level headlines titled *Setup* and *Teardown* are executed before and after a category is run, respectively
-* Tests error when their code yields a nonzero exitcode.
+![markdown-driven-tests](https://cloud.githubusercontent.com/assets/696742/12705916/da1e2cca-c879-11e5-99ed-6537851e5af6.png)
 
 Have a look at the markdown files [in here](https://github.com/xp-runners/spec/tree/master/spec) for examples.
