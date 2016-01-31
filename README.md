@@ -9,7 +9,7 @@ Test the XP Runners
 $ sh spec/framework/run.sh spec/*.md
 XP Runners specification tests
 (c) 2016 https://github.com/xp-runners/spec/
-Linux vagrant-ubuntu-vivid-64 3.19.0-42-generic #48-Ubuntu SMP Thu Dec 17 22:54:45 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+Linux vagrant-ubuntu-vivid-64 3.19.0-42-generic #48-Ubuntu SMP Thu Dec 17 22:54:45 UTC 2015 x86_64 GNU/Linux
 
 Basic tests
 
