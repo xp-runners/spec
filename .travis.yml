@@ -1,0 +1,15 @@
+language: c
+
+os:
+  - linux
+  - osx
+
+sudo: required
+
+install:
+  - sh install-${TRAVIS_OS_NAME}.sh
+
+script:
+  - echo 'It worked!' > class-main.php
+  - curl -sSL https://bintray.com/artifact/download/xp-runners/generic/setup-7.0.0.sh | sh
+  - ./xp
