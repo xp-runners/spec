@@ -4,6 +4,8 @@ set -e
 set -u
 
 echo "Installing Mono"
+sudo apt-get update
+sudo apt-cache search mono
 sudo apt-get install libmono-corlib4.5-cil libmono-2.0-1
 
 echo "Installing PHP"
