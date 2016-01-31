@@ -39,18 +39,22 @@ esac
 
 DIR=$(mktemp -d)
 cp xp* "$DIR"
-echo '<?= $argv[1];' > "$DIR/class-main.php"
+echo '<?= implode(" ", array_slice($argv, 1));' > "$DIR/class-main.php"
 result=0
 
 echo "Run"
 verify "com.example.Test" "$EXE com.example.Test" || result=1
 verify "com.example.Test" "$EXE run com.example.Test" || result=1
+verify "com.example.Test Arg1 Arg2" "$EXE run com.example.Test Arg1 Arg2" || result=1
 echo
 
 echo "Help"
-verify "xp.runtime.Help" "$EXE" || result=1
-verify "xp.runtime.Help" "$EXE -?" || result=1
-verify "xp.runtime.Help" "$EXE help" || result=1
+verify "xp.runtime.Help +AEA-xp/runtime/xp.md" "$EXE" || result=1
+verify "xp.runtime.Help +AEA-xp/runtime/xp.md" "$EXE -?" || result=1
+verify "xp.runtime.Help +AEA-xp/runtime/xp.md" "$EXE help" || result=1
+verify "xp.runtime.Help +AEA-xp/runtime/ar.md" "$EXE help ar" || result=1
+verify "xp.runtime.Help +AEA-xp/runtime/topic.md" "$EXE help /topic" || result=1
+#-IGNORE verify "xp.runtime.Help +AEA-xp/runtime/topic.md" "$EXE help ar/topic" || result=1
 echo
 
 echo "Version"
@@ -59,10 +63,10 @@ verify "xp.runtime.Version" "$EXE version" || result=1
 echo
 
 echo "Dump"
-verify "xp.runtime.Dump" "$EXE -w" || result=1
-verify "xp.runtime.Dump" "$EXE -d" || result=1
-verify "xp.runtime.Dump" "$EXE write" || result=1
-verify "xp.runtime.Dump" "$EXE dump" || result=1
+verify "xp.runtime.Dump -w" "$EXE -w" || result=1
+verify "xp.runtime.Dump -d" "$EXE -d" || result=1
+verify "xp.runtime.Dump -w" "$EXE write" || result=1
+verify "xp.runtime.Dump -d" "$EXE dump" || result=1
 echo
 
 echo "Eval"
@@ -72,6 +76,7 @@ echo
 
 echo "XAR"
 verify "xp.xar.Runner" "$EXE ar" || result=1
+verify "xp.xar.Runner cvf test.xar ." "$EXE ar cvf test.xar ." || result=1
 echo
 
 echo "Negative tests"
