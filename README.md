@@ -6,15 +6,21 @@ XP Runners
 Test the XP Runners
 
 ```
-$ sh spec/basic.sh
-XP Runners basic tests
+$ sh spec/framework/run.sh spec/*.md
+XP Runners specification tests
 (c) 2016 https://github.com/xp-runners/spec/
-CYGWIN_NT-10.0 slate 2.1.0(0.287/5/3) 2015-07-14 21:28 x86_64 Cygwin
+Linux vagrant-ubuntu-vivid-64 3.19.0-42-generic #48-Ubuntu SMP Thu Dec 17 22:54:45 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
 
-Run
-✓ OK: `xp.exe com.example.Test' -> com.example.Test
-✓ OK: `xp.exe run com.example.Test' -> com.example.Test
-✓ OK: `xp.exe run com.example.Test Arg1 Arg2' -> com.example.Test Arg1 Arg2
+Basic tests
+
+> Negative tests
+✓ OK: `xp nih' -> Command not implemented: nih
+
+> Run
+✓ OK: `xp com.example.Test' -> com.example.Test
+✓ OK: `xp com/example/Test.class.php' -> com/example/Test.class.php
+✓ OK: `xp run com.example.Test' -> com.example.Test
+✓ OK: `xp run com.example.Test Arg1 Arg2' -> com.example.Test Arg1 Arg2
 
 # ...
 
