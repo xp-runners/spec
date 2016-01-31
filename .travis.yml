@@ -5,9 +5,9 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
-    - os: osx
-      osx_image: xcode7.2
-      sudo: required
+# - os: osx
+#   osx_image: xcode7.2
+#   sudo: required
 
 install:
   - sh install-${TRAVIS_OS_NAME}.sh
