@@ -4,7 +4,7 @@ set -e
 set -u
 
 MONO_VERSION=4.2.2  # See http://download.mono-project.com/archive/
-PHP_VERSION=php70   # See https://github.com/Homebrew/homebrew-php
+PHP_VERSION=php56   # See https://github.com/Homebrew/homebrew-php
 
 echo "Installing Mono ${MONO_VERSION}"
 curl "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -o mono.pkg
