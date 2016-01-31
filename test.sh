@@ -8,7 +8,7 @@ verify() {
   command="$2"
   code=${3-0}
 
-  output=$($command 2>&1) && exit=0 || exit=$? 
+  output=$("$DIR"/$command 2>&1) && exit=0 || exit=$? 
 
   if [ $exit -eq $code ] ; then
     if echo "$output" | grep -q "$expect"; then
@@ -29,47 +29,47 @@ case $(uname) in
   *) EXE=xp ;;
 esac
 
-dir=$(mktemp -d)
-cp xp* "$dir"
-echo '<?= $argv[1];' > "$dir/class-main.php"
+DIR=$(mktemp -d)
+cp xp* "$DIR"
+echo '<?= $argv[1];' > "$DIR/class-main.php"
 result=0
 
 echo "Run"
-verify "com.example.Test" "$dir/$EXE com.example.Test" || result=1
-verify "com.example.Test" "$dir/$EXE run com.example.Test" || result=1
+verify "com.example.Test" "$EXE com.example.Test" || result=1
+verify "com.example.Test" "$EXE run com.example.Test" || result=1
 echo
 
 echo "Help"
-verify "xp.runtime.Help" "$dir/$EXE" || result=1
-verify "xp.runtime.Help" "$dir/$EXE -?" || result=1
-verify "xp.runtime.Help" "$dir/$EXE help" || result=1
+verify "xp.runtime.Help" "$EXE" || result=1
+verify "xp.runtime.Help" "$EXE -?" || result=1
+verify "xp.runtime.Help" "$EXE help" || result=1
 echo
 
 echo "Version"
-verify "xp.runtime.Version" "$dir/$EXE -v" || result=1
-verify "xp.runtime.Version" "$dir/$EXE version" || result=1
+verify "xp.runtime.Version" "$EXE -v" || result=1
+verify "xp.runtime.Version" "$EXE version" || result=1
 echo
 
 echo "Dump"
-verify "xp.runtime.Dump" "$dir/$EXE -w" || result=1
-verify "xp.runtime.Dump" "$dir/$EXE -d" || result=1
-verify "xp.runtime.Dump" "$dir/$EXE write" || result=1
-verify "xp.runtime.Dump" "$dir/$EXE dump" || result=1
+verify "xp.runtime.Dump" "$EXE -w" || result=1
+verify "xp.runtime.Dump" "$EXE -d" || result=1
+verify "xp.runtime.Dump" "$EXE write" || result=1
+verify "xp.runtime.Dump" "$EXE dump" || result=1
 echo
 
 echo "Eval"
-verify "xp.runtime.Evaluate" "$dir/$EXE -e" || result=1
-verify "xp.runtime.Evaluate" "$dir/$EXE eval" || result=1
+verify "xp.runtime.Evaluate" "$EXE -e" || result=1
+verify "xp.runtime.Evaluate" "$EXE eval" || result=1
 echo
 
 echo "XAR"
-verify "xp.xar.Runner" "$dir/$EXE ar" || result=1
+verify "xp.xar.Runner" "$EXE ar" || result=1
 echo
 
 echo "Negative tests"
-verify "Command not implemented: nih" "$dir/$EXE nih" 2 || result=1
+verify "Command not implemented: nih" "$EXE nih" 2 || result=1
 
-rm -rf "$dir"
+rm -rf "$DIR"
 echo
 echo "Exit $result"
 exit $result
