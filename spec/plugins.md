@@ -40,8 +40,8 @@ $ xp help sql
 xp.runtime.Help xp.user.SqlRunner
 
 $ xp help user/topic
-xp.runtime.Help +AEA-xp/user/topic.md
+xp.runtime.Help +AEA-xp/user/user/topic.md
 
 $ xp help sql/topic
-xp.runtime.Help +AEA-xp/user/topic.md
+xp.runtime.Help +AEA-xp/user/sql/topic.md
 ```

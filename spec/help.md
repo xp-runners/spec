@@ -34,4 +34,7 @@ Help about builtin subcommands comes *xp/runtime/${command}.md*
 ```sh
 $ xp help ar
 xp.runtime.Help +AEA-xp/runtime/ar.md
+
+$ xp help ar/versions
+xp.runtime.Help +AEA-xp/runtime/ar/versions.md
 ```
