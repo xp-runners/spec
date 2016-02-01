@@ -18,7 +18,7 @@ touch bin/xp.example.user.sql
 cd "$PREV"
 ```
 
-## User
+## Subcommands
 A user subcommand can be created by supplying a file named *xp.{vendor}.{name}[.{cmd}]*.
 
 ```sh
@@ -27,4 +27,21 @@ xp.user.Runner
 
 $ xp sql
 xp.user.SqlRunner 
+```
+
+## Help
+The `help` subcommand will use the subcommand's entry point as argument for the Help class.
+
+```sh
+$ xp help user
+xp.runtime.Help xp.user.Runner
+
+$ xp help sql
+xp.runtime.Help xp.user.SqlRunner
+
+$ xp help user/topic
+xp.runtime.Help +AEA-xp/user/topic.md
+
+$ xp help sql/topic
+xp.runtime.Help +AEA-xp/user/topic.md
 ```
