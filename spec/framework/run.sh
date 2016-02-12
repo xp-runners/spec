@@ -16,15 +16,10 @@ echo
 . $(dirname "$0")/tests.sh
 . $(dirname "$0")/verify.sh
 
-if [ -z "$TMPDIR" ]; then
-    TEMPDIR="$TMPDIR"
-else
-    TEMPDIR="/tmp"
-fi
-
+temp=${TMPDIR-${TEMP-${TMP-/tmp}}}
 result=0
 for markdown in "$@" ; do
-  DIR=$(mktemp -d "$TEMPDIR/tmp.XXXXXXXXXX")
+  DIR=$(mktemp -d "$temp/tmp.XXXXXXXXXX")
   case $(uname) in
     CYGWIN*) EXE=xp.exe ; cp xp.exe "$DIR" ;;
     Darwin*) EXE=xp ; cp xp xp.exe "$DIR" ;;
