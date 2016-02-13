@@ -13,6 +13,6 @@ install:
   - sh install-${TRAVIS_OS_NAME}.sh
 
 script:
-  - curl -sSL https://bintray.com/artifact/download/xp-runners/generic/setup-7.1.2.sh > setup.sh
+  - curl -sSL https://bintray.com/artifact/download/xp-runners/generic/setup-master.sh > setup.sh
   - sh setup.sh
   - time sh spec/framework/run.sh spec/*.md
