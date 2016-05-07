@@ -16,7 +16,7 @@ core-via-ini
 ```
 
 ## Passing a config file
-The configuration file can be explicitely specified via `-c`:
+The configuration file can be explicitely specified via `-c`. If the file does not exist, an error is raised.
 
 ```sh
 $ xp -c .
@@ -24,13 +24,9 @@ core-via-ini
 
 $ xp -c ./xp.ini
 core-via-ini
-```
 
-If the file does not exist, an error is raised
-
-```sh
 $ xp -c not-an-ini-file
-1: Could not find file
+2: Invalid configuration
 ```
 
 ## Without
