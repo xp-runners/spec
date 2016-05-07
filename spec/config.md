@@ -33,7 +33,6 @@ $ xp -c not-an-ini-file
 To run without a configuration file, use `-n`: This only takes environment settings into account.
 
 ```sh
-export XP_RT=php
 export USE_XP=local-core
 $ xp -n
 local-core
