@@ -11,6 +11,15 @@ fi
 printf "\033[32;1mXP Runners specification tests\033[0m\n"
 echo '(c) 2016 https://github.com/xp-runners/spec/'
 uname -a
+
+PHP=${XP_RT-$(which php 2>/dev/null || echo No)}
+if [ No = $PHP ] ; then
+  echo
+  echo "! No PHP runtime, cannot run tests. Set XP_RT=/path/to/php{.exe} to specify!"
+  exit 1
+fi
+$PHP -v
+
 echo
 
 . $(dirname "$0")/tests.sh
