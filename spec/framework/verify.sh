@@ -13,11 +13,11 @@ verify() {
       echo "✓ OK: \`$command' -> $output"
       return 0
     else
-      printf "\033[33;1m× FAIL: \`$command' -> Expect $expect, have $output\033[0m\n"
+      printf "\033[33;1m× FAIL: \`%s' -> Expect %s, have %s\033[0m\n" "$command" "$expect" "$output"
       return 1
     fi
   else
-    printf "\033[31;1m! ERROR: \`$command' $exit: $output\033[0m\n"
+    printf "\033[31;1m! ERROR: \`%s' %d: %s\033[0m\n" "$command" $exit "$output"
     return 127
   fi
 }
