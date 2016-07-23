@@ -36,7 +36,7 @@ for markdown in "$@" ; do
   case $(uname) in
     CYGWIN*) EXE=xp.exe ; cp xp.exe "$DIR" ;;
     Darwin*) EXE=xp ; cp xp xp.exe "$DIR" ;;
-    *) EXE=xp ; cp xp "$DIR" ;;
+    *) EXE=xp ; cp xp "$DIR" ; if [ -f xp.exe ] ; then cp xp.exe "$DIR" ; fi;;
   esac
 
   printf '\033[32;1m%s\033[0m\n' "$(parse "$markdown" "$DIR")"
