@@ -18,6 +18,10 @@ if [ No = $PHP ] ; then
   echo "! No PHP runtime, cannot run tests. Set XP_RT=/path/to/php{.exe} to specify!"
   exit 1
 fi
+
+case $(uname) in
+  CYGWIN*) PHP=$(cygpath -u "$PHP") ;;
+esac
 $PHP -v
 
 echo
